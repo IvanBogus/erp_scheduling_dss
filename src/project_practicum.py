@@ -12,7 +12,6 @@ calculation complexity as the number of input operations grows.
 from __future__ import annotations
 
 import argparse
-import csv
 import math
 import os
 import time
@@ -25,6 +24,7 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from ortools.sat.python import cp_model
 
 
@@ -404,23 +404,21 @@ def plot_gantt(result: ScheduleResult, output_path: Path) -> None:
 
 
 def write_schedule_csv(result: ScheduleResult, output_path: Path) -> None:
-    with writable_output_path(output_path).open("w", encoding="utf-8", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["method", "job", "task", "machine", "start", "end", "duration", "due_date", "priority"])
-        for item in result.schedule:
-            writer.writerow(
-                [
-                    result.name,
-                    item.job_id,
-                    item.task_id,
-                    item.machine_id,
-                    item.start,
-                    item.end,
-                    item.duration,
-                    item.due_date,
-                    item.priority,
-                ]
-            )
+    rows = [
+        {
+            "method": result.name,
+            "job": item.job_id,
+            "task": item.task_id,
+            "machine": item.machine_id,
+            "start": item.start,
+            "end": item.end,
+            "duration": item.duration,
+            "due_date": item.due_date,
+            "priority": item.priority,
+        }
+        for item in result.schedule
+    ]
+    pd.DataFrame(rows).to_csv(writable_output_path(output_path), index=False, encoding="utf-8")
 
 
 def compare_complexity(machine_count: int, max_jobs: int, time_limit_seconds: float) -> list[dict[str, float]]:
@@ -466,10 +464,7 @@ def compare_complexity(machine_count: int, max_jobs: int, time_limit_seconds: fl
 
 
 def write_complexity_csv(rows: list[dict[str, float]], output_path: Path) -> None:
-    with writable_output_path(output_path).open("w", encoding="utf-8", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=list(rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(rows)
+    pd.DataFrame(rows).to_csv(writable_output_path(output_path), index=False, encoding="utf-8")
 
 
 def plot_complexity(rows: list[dict[str, float]], output_path: Path) -> None:

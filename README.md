@@ -24,7 +24,7 @@
 - Hybrid optimization: запуск CP-SAT з верхньою межею `makespan`, отриманою від R&D моделі;
 - verification: перевірка повноти операцій, технологічної послідовності та відсутності перетинів на машинах;
 - visualization: побудова діаграм Ганта та графіка складності;
-- reporting: збереження CSV-таблиць і PNG-графіків у `reports`.
+- reporting: формування CSV-таблиць через `pandas` і PNG-графіків у `reports`.
 
 Основна логіка знаходиться у [`src/project_practicum.py`](src/project_practicum.py).
 
@@ -200,6 +200,14 @@ python scripts/run_experiment.py --jobs 10 --machines 5 --time-limit 5
 - [`reports/tables/`](reports/tables/).
 
 Якщо результатний PNG або CSV відкритий у редакторі й Windows блокує перезапис, скрипт не зупиняється, а створює нумеровану копію на кшталт `schedule_cp_sat_latest_1.csv`.
+
+## Технології
+
+- Python;
+- Google OR-Tools;
+- NumPy;
+- pandas;
+- matplotlib.
 
 ## Покриття вимог практикуму
 
