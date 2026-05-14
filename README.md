@@ -153,25 +153,27 @@ Hybrid CP-SAT + R&D:
 
 ```text
 .
-|-- README.md
-|-- requirements.txt
 |-- src/
-|   |-- __init__.py
-|   `-- project_practicum.py
+|   |-- __init__.py              # службовий файл Python-пакета
+|   `-- project_practicum.py     # генерація даних, CP-SAT, R&D, Hybrid, верифікація, графіки
 |-- scripts/
-|   `-- run_experiment.py
-`-- reports/
-    |-- figures/
-    |   |-- architecture.png
-    |   |-- complexity_comparison.png
-    |   |-- gantt_cp_sat.png
-    |   |-- gantt_hybrid.png
-    |   `-- gantt_multicriteria.png
-    `-- tables/
-        |-- complexity_results.csv
-        |-- schedule_cp_sat.csv
-        |-- schedule_hybrid.csv
-        `-- schedule_multicriteria.csv
+|   `-- run_experiment.py        # основний сценарій запуску експерименту
+|-- reports/
+|   |-- figures/
+|   |   |-- architecture.png              # структурна схема pipeline
+|   |   |-- complexity_comparison.png     # графік складності A / B / A+B
+|   |   |-- gantt_cp_sat.png              # діаграма Ганта для CP-SAT baseline
+|   |   |-- gantt_hybrid.png              # діаграма Ганта для Hybrid CP-SAT + R&D
+|   |   `-- gantt_multicriteria.png       # діаграма Ганта для R&D multicriteria
+|   `-- tables/
+|       |-- complexity_results.csv        # порівняння складності, часу та якості
+|       |-- schedule_cp_sat.csv           # табличний розклад CP-SAT baseline
+|       |-- schedule_hybrid.csv           # табличний розклад Hybrid CP-SAT + R&D
+|       `-- schedule_multicriteria.csv    # табличний розклад R&D multicriteria
+|-- requirements.txt              # Python-залежності
+|-- README.md                     # документація проєкту
+|-- .gitignore                    # правила виключення службових файлів із Git
+`-- LICENSE                       # ліцензія проєкту
 ```
 
 ## Як запустити
