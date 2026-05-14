@@ -225,6 +225,15 @@ python scripts/run_experiment.py --jobs 10 --machines 5 --time-limit 5
 | Інноваційний підхід до підвищення продуктивності CP-SAT | Hybrid `A+B` з R&D upper bound | реалізовано |
 | Тестування та верифікація | `verify_schedule()` | реалізовано |
 
+## License and Academic Use
+
+The source code in this repository is licensed under the MIT License.
+
+This project was created for educational and research purposes. If you use the source code, experimental results, figures, tables, README text, or substantial parts of this work in academic materials, reports, theses, or scientific publications, please provide proper attribution to the author.
+
+Author: Ivan Bohuslavets  
+Year: 2026
+
 ## English Summary
 
 **ERP/DSS Scheduling Practicum** is an educational Data Science project focused on decision support for job-shop scheduling. It compares three scheduling branches: a classic CP-SAT baseline, an R&D multicriteria dispatching heuristic, and a hybrid CP-SAT model bounded by the R&D solution.
